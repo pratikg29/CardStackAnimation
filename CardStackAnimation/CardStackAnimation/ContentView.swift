@@ -51,32 +51,41 @@ struct ContentView: View {
                                 .onEnded({ gesture in
                                     guard isFrontCard(index) else { return }
                                     if abs(offset.height) > 300 {
+                                        let width = UIScreen.main.bounds.size.width/2
+                                        withAnimation(.easeInOut(duration: 0.3)) {
+                                            rotationAngle = 360 * (offset.origin.x < width ? 1 : -1)
+                                        }
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                             cards.removeLast()
                                             cards.insert(card, at: 0)
                                             zIndex = 0
                                             rotationAngle = 0
                                         }
-                                    }
-                                    
-                                    
-                                    withAnimation(.easeInOut(duration: 0.2)) {
-                                        offset.size.height -= 100
-//                                        offset = CGRect(origin: offset.origin, size: CGSize(width: offset.width, height: offset.height))
-                                    }
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        withAnimation(.easeInOut(duration: 0.2)) {
+                                            offset.size.height -= 100
+                                        }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                            withAnimation(.easeInOut(duration: 0.3)) {
+                                                offset = .zero
+                                            }
+                                        }
+                                    } else {
                                         withAnimation(.easeInOut(duration: 0.3)) {
+                                            rotationAngle = 0
                                             offset = .zero
                                         }
                                     }
                                     
-                                    if abs(offset.height) > 200 {
-                                        let width = UIScreen.main.bounds.size.width/2
-                                        withAnimation(.easeInOut(duration: 0.3)) {
-                                            rotationAngle = 360 * (offset.origin.x < width ? 1 : -1)
-                                        }
-                                    }
+                                    
+                                    
+                                    
+                                    
+//                                    if abs(offset.height) > 200 {
+//                                        let width = UIScreen.main.bounds.size.width/2
+//                                        withAnimation(.easeInOut(duration: 0.3)) {
+//                                            rotationAngle = 360 * (offset.origin.x < width ? 1 : -1)
+//                                        }
+//                                    }
                                 })
                         )
                 }
