@@ -46,6 +46,8 @@ struct ContentView: View {
                                     rotationAngle = getRotationAgnle()
                                     if abs(offset.height) > 300 {
                                         zIndex = -1
+                                    } else {
+                                        zIndex = 0
                                     }
                                 })
                                 .onEnded({ gesture in
@@ -75,17 +77,6 @@ struct ContentView: View {
                                             offset = .zero
                                         }
                                     }
-                                    
-                                    
-                                    
-                                    
-                                    
-//                                    if abs(offset.height) > 200 {
-//                                        let width = UIScreen.main.bounds.size.width/2
-//                                        withAnimation(.easeInOut(duration: 0.3)) {
-//                                            rotationAngle = 360 * (offset.origin.x < width ? 1 : -1)
-//                                        }
-//                                    }
                                 })
                         )
                 }
