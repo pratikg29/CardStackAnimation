@@ -13,7 +13,7 @@ struct CardView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30, style: .continuous)
-                .fill(LinearGradient(colors: [model.color.opacity(0.6), model.color.opacity(0.4)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(LinearGradient(colors: [model.color.opacity(0.6), model.color.opacity(0.3)], startPoint: .topLeading, endPoint: .bottomTrailing))
 //                .overlay(
 //                    RoundedRectangle(cornerRadius: 30, style: .continuous)
 //                        .stroke(lineWidth: 10)
